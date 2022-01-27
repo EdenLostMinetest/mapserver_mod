@@ -10,7 +10,10 @@ local function explode(sep, input)
 end
 
 local function get_max_lag()
-        local arrayoutput = explode(", ",minetest.get_server_status())
+        local status = minetest.get_server_status()
+        if type(status) ~= "string" then return 0 end
+
+        local arrayoutput = explode(", ",status)
         arrayoutput = explode("=",arrayoutput[4])
         return arrayoutput[1]
 end
