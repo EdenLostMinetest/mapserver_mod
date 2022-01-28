@@ -12,6 +12,7 @@ end
 local function get_max_lag()
         local status = minetest.get_server_status()
         if type(status) ~= "string" then return 0 end
+        if status == "" then return 0 end
 
         local arrayoutput = explode(", ",status)
         arrayoutput = explode("=",arrayoutput[4])
